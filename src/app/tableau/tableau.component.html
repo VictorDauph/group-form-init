@@ -1,0 +1,14 @@
+  <table>
+      <thead>
+        <tr>
+          <th *ngFor="let fields of fields" scope="col">{{fields}}</th>
+        </tr>
+      </thead> 
+          <tbody>
+              <!-- on boucle sur le form array, chaque formGroup représente une entité/ligne-->
+              <tr *ngFor="let formGroup of formArray; let formGroupIndex=index" >
+                <!-- on boucle sur le formGroup, chaque field est un formControl généré à partir d'un champs du modèle-->
+                <td [formGroup]="formGroup" *ngFor="let field of fields" ><input (keyup)="onInputChange($event,formGroupIndex,field)" type="text" [formControlName]="field" /> </td>
+              </tr>
+          </tbody>
+  </table>
