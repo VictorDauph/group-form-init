@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import fakeData from '../../assets/fake-data.json';
+import fakeData from '../../assets/animaux.json';
 import { Personne } from '../modeles/Personne';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { FormGroupFields } from '../modeles/interface/FormGroupFields';
+import { Animal } from '../modeles/Animal';
 
 
 @Component({
@@ -13,16 +14,16 @@ import { FormGroupFields } from '../modeles/interface/FormGroupFields';
 export class TableauComponent implements OnInit {
 
   //Il doit y'avoir moyen d'améliorer la construction de ce tableau en utilisant un constructor de personnes avec des paramètres optionnels et obligatoires
- data :Personne[] = fakeData.personnes;
+ data :Animal[] = fakeData;
  fields:string[] = []
- personnes:Personne[]=[]
+ personnes:Animal[]=[]
  //form:FormGroup=new FormGroup({});
  formArray:FormGroup[]= [];
 
    constructor(private fb:FormBuilder){
     //On construit un tableau de personnes typées à partir des données brutes.
     this.data.forEach(
-      (personne:Personne)=>{
+      (personne:Animal)=>{
         this.personnes.push(personne)
       }
     )

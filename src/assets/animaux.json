@@ -1,0 +1,53 @@
+[
+    {
+      "espece": "Chat",
+      "age": 3,
+      "couleur": "Gris"
+    },
+    {
+      "espece": "Chien",
+      "age": 5,
+      "couleur": "Marron"
+    },
+    {
+      "espece": "Lapin",
+      "age": 2,
+      "couleur": "Blanc"
+    },
+    {
+      "espece": "Oiseau",
+      "age": 1,
+      "couleur": "Bleu"
+    },
+    {
+      "espece": "Souris",
+      "age": 1,
+      "couleur": "Gris"
+    },
+    {
+      "espece": "Poisson",
+      "age": 2,
+      "couleur": "Rouge"
+    },
+    {
+      "espece": "Serpent",
+      "age": 4,
+      "couleur": "Vert"
+    },
+    {
+      "espece": "Tortue",
+      "age": 10,
+      "couleur": "Jaune"
+    },
+    {
+      "espece": "Grenouille",
+      "age": 2,
+      "couleur": "Vert"
+    },
+    {
+      "espece": "Cheval",
+      "age": 7,
+      "couleur": "Noir"
+    }
+  ]
+  
