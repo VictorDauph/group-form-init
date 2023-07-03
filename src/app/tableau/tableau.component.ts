@@ -16,7 +16,6 @@ export class TableauComponent implements OnInit {
  data :Personne[] = fakeData.personnes;
  fields:string[] = []
  personnes:Personne[]=[]
- //form:FormGroup=new FormGroup({});
  formArray:FormGroup[]= [];
 
    constructor(private fb:FormBuilder){
@@ -46,23 +45,20 @@ export class TableauComponent implements OnInit {
    
    //construit un formGroup à partir dun FormGroupFields
    buildFormGroup(p:number){
-    const formGroupFields = this.getFormControlsFields();
+    const formGroupFields = this.getFormControlsFields(p);
     //l'objet formGroupFields permet de construire directement un formGroup
     let form = new FormGroup(formGroupFields);
-
-    //On applique la valeur liée à l'objet au formcontrol qui le représente.
-    for(const field of this.fields){
-      form.controls[field].setValue(this.personnes[p][field])   
-    }
 
     this.formArray.push(form);
    }
 
-   getFormControlsFields(){
+   getFormControlsFields(p:number){
     //FormGroupFields est un objet constitué dynamiquement qui contient les formsControls issus du modèle sous forme de clés.
     const formGroupFields:FormGroupFields = {};
     for( const field of this.fields){
-      formGroupFields[field]= new FormControl();
+      //On crée un form control. Son nom est le field extrait du formGroupFields. 
+      //Le FormControl a pour valeur par défaut la valeur du champs de l'objet extrait des données json.
+      formGroupFields[field]= new FormControl(this.personnes[p][field]);
     }
     return formGroupFields;
    }
