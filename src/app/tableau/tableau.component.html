@@ -6,9 +6,9 @@
       </thead> 
           <tbody>
               <!-- on boucle sur le form array, chaque formGroup représente une entité/ligne-->
-              <tr *ngFor="let formGroup of formArray; let formGroupIndex=index" >
+              <tr *ngFor="let formGroup of formArray.controls; let formGroupIndex=index" >
                 <!-- on boucle sur le formGroup, chaque field est un formControl généré à partir d'un champs du modèle-->
-                <td [formGroup]="formGroup" *ngFor="let field of fields" ><input (keyup)="onInputChange($event,formGroupIndex,field)" type="text" [formControlName]="field" /> </td>
+                <td [formGroup]="getPersonneByIndex(formGroupIndex)" *ngFor="let field of fields" ><input (keyup)="onInputChange($event,formGroupIndex,field)" type="text" [formControlName]="field" /> </td>
               </tr>
           </tbody>
   </table>

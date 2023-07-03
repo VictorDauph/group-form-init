@@ -16,7 +16,15 @@ export class TableauComponent implements OnInit {
  data :Personne[] = fakeData.personnes;
  fields:string[] = []
  personnes:Personne[]=[]
- formArray:FormGroup[]= [];
+
+ formGroup1:FormGroup= this.fb.group({
+  nom:null,
+  prenom:null,
+  age:null,
+  profession:null
+ })
+
+ formArray:FormArray<FormGroup<any>>= this.fb.array([this.formGroup1])
 
    constructor(private fb:FormBuilder){
     //On construit un tableau de personnes typées à partir des données brutes.
@@ -40,6 +48,7 @@ export class TableauComponent implements OnInit {
     for (let p = 0; p<this.personnes.length; p++){
       this.buildFormGroup(p)
     }
+    this.formArray.removeAt(0) ;
     
    }
    
@@ -47,9 +56,9 @@ export class TableauComponent implements OnInit {
    buildFormGroup(p:number){
     const formGroupFields = this.getFormControlsFields(p);
     //l'objet formGroupFields permet de construire directement un formGroup
-    let form = new FormGroup(formGroupFields);
+    let form:FormGroup = new FormGroup(formGroupFields);
 
-    this.formArray.push(form);
+    this.formArray.push(form)
    }
 
    getFormControlsFields(p:number){
@@ -65,9 +74,14 @@ export class TableauComponent implements OnInit {
 
    onInputChange(event:any,formGroupIndex:number,field:string){
 
-    this.formArray[formGroupIndex].controls[field].setValue(event.target.value)
-    console.log(this.formArray[formGroupIndex].controls[field].value)
+    this.formArray.controls[formGroupIndex].controls[field].setValue(event.target.value)
+    console.log(this.formArray.controls[formGroupIndex].controls[field].value)
 
+   }
+
+   getPersonneByIndex(i:number):FormGroup{
+
+    return this.formArray.controls[i] as FormGroup
    }
 }
 
